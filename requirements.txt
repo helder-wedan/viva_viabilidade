@@ -1,0 +1,12 @@
+Babel
+dash
+dash-bootstrap-components
+dash-bootstrap-templates
+dash-core-components
+dash-html-components
+dash-table==5.0.0 
+gunicorn
+numpy
+pandas
+plotly
+openpyxl
