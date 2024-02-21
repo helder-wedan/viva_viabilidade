@@ -329,8 +329,9 @@ tela = html.Div(children=[
                 card("Ponto de Equilíbrio Diferido","ponto_equilibrio_dif_card"),
                 ],xs = 7, sm=7, md=5, lg=2),
 
-            dbc.Col([dcc.Loading(id="loading-1",type="dot",),
-                     html.Div([dcc.Graph(id="saldo_pga"),],),
+            dbc.Col([
+                     html.Div([dcc.Loading(id="loading-1",type="dot",),
+                               dcc.Graph(id="saldo_pga"),],),
                      html.Div([dcc.Graph(id="saldo_portabilidade"),]),
                      html.Div([dcc.Graph(id="saldo_pga_dif"),]),
                      html.Div([dcc.Graph(id="saldo_portabilidade_dif"),]),
