@@ -329,7 +329,8 @@ tela = html.Div(children=[
                 card("Ponto de Equilíbrio Diferido","ponto_equilibrio_dif_card"),
                 ],xs = 7, sm=7, md=5, lg=2),
 
-            dbc.Col([html.Div([dcc.Graph(id="saldo_pga"),],),
+            dbc.Col([dcc.Loading(id="loading-1",type="dot",),
+                     html.Div([dcc.Graph(id="saldo_pga"),],),
                      html.Div([dcc.Graph(id="saldo_portabilidade"),]),
                      html.Div([dcc.Graph(id="saldo_pga_dif"),]),
                      html.Div([dcc.Graph(id="saldo_portabilidade_dif"),]),
@@ -345,7 +346,8 @@ app.layout = html.Div(
 )
 
 @app.callback(
-    [   Output("comissao_card", "children"),
+    [   Output("loading-1", "children"),
+        Output("comissao_card", "children"),
         Output("beneficio_card", 'children'),
         Output("beneficio_diferido_card", 'children'),
         Output("expectativa_card", 'children'),
@@ -445,7 +447,7 @@ def update_values(tabua_nome, idade,comissao,tx_juros_anual,tx_adm_anual,portabi
     figura3 = criar_figura(tabela_diferida, 'Saldo PGA', 'Taxa Adm', 'Tx Adm Mensal', 'Saldo do PGA e Taxa Adm Mensal (com diferimento)')
     figura4 = criar_figura(tabela_diferida, 'Saldo Portabilidade', 'Benefício', 'Benefício', 'Saldo de Portabilidade e Benefício Mensal (com diferimento)')
 
-    return comissao_valor,format_currency(beneficio + 0.0, "BRL", locale="pt_BR"),format_currency(beneficio_diferido + 0.0, "BRL", locale="pt_BR"),f"{round(expectativa,2)} anos",meses,f"{round(idade_final,2)} anos",f"{pronto_equilibrio} meses",f"{ponto_equilibrio_dif} meses",figura1,figura2,figura3,figura4
+    return "",comissao_valor,format_currency(beneficio + 0.0, "BRL", locale="pt_BR"),format_currency(beneficio_diferido + 0.0, "BRL", locale="pt_BR"),f"{round(expectativa,2)} anos",meses,f"{round(idade_final,2)} anos",f"{pronto_equilibrio} meses",f"{ponto_equilibrio_dif} meses",figura1,figura2,figura3,figura4
 
 
 @app.callback(
