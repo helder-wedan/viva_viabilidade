@@ -15,7 +15,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
 # =======================
 
-dir = "database\banco_tabuas.xlsx"
+dir = "database/banco_tabuas.xlsx"
 tabuas = pd.read_excel(dir)
 
 lista = tabuas.columns[1:]
